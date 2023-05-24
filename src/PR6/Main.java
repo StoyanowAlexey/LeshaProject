@@ -19,5 +19,5 @@ public class Main {
         array4.sort(true);
 
     }
-    // Integer and int ; string buider
+    /// Integer and int ; string buider
 }
