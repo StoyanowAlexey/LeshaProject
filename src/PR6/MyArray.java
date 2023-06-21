@@ -1,20 +1,23 @@
 package PR6;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Random;
 public class MyArray {
     private Integer [] arr;
     private int size;
     MyArray(){
         arr = new Integer [8];
+        size = arr.length;
     }
     MyArray(boolean f){
-        if(f) arr = new Integer [8];
-        else {
-                Random random = new Random();
-                for (int i = 0; i < 8; i++) {
-                    arr[i] = random.nextInt();
-                }
+        arr = new Integer [8];
+        size = arr.length;
+        if(f) {
+            Random random = new Random();
+            for (int i = 0; i < size; i++) {
+                arr[i] = random.nextInt(1, 10);
+            }
         }
     }
     MyArray(int size){
@@ -32,13 +35,13 @@ public class MyArray {
         }
     }
     MyArray(Integer[] myArray){
-        myArray = arr;
+        arr = myArray;
+        size = arr.length;
     }
     void fill (int k){
         Random random = new Random();
         for(int i = 0; i < k; i++){
             arr[i] = random.nextInt(10,20);
-            System.out.print(arr[i] + " ");
         }
     }
      public String toString(){
@@ -49,14 +52,16 @@ public class MyArray {
         return ch.toString();
      }
      public int Size(){
-        return size;
+        return arr != null ? arr.length : 0;
      }
      int get(int index){
-        if(index < 0 || index > size) return -1;
-        else return arr[index];
+        if(index < 0 || index > size)
+            return -1;
+        else
+            return arr[index];
      }
      int set(int index, int newValue){
-        if(index < 0 || index > size) return -1;
+        if(index < 0 || index > size - 1) return -1;
         else {
             int ch = arr[index];
             arr[index] = newValue;
@@ -76,15 +81,42 @@ public class MyArray {
         }
         return getChisla;
      }
-     boolean equals (Integer [] mas1 ,Integer [] mas2) {
+     //@Override
+     /*boolean equals (MyArray mas2) {
          boolean f = true;
          for (int i = 0; i < size; i++) {
-             if (mas1[i] != mas2[i]) {
+             if (arr[i] != mas2[i] || arr.length != mas2.length) {
                  f = false;
                  break;
              }
          }
          return f;
      }
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyArray myArray = (MyArray) o;
+        boolean f = true;
+        if(myArray.size != ((MyArray) o).size) f = false;
+        else {
+            for(int i = 0; i < myArray.size; i++){
+                if(((MyArray) o).arr[i] != this.arr[i]) {
+                    f = false;
+                    break;
+                }
+            }
+        }
+        return f;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(size);
+        result = 31 * result + Arrays.hashCode(arr);
+        return result;
+    }
 }
 //
