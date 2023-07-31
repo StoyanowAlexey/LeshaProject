@@ -2,15 +2,15 @@ package LB3.clases;
 
 import static java.lang.Math.min;
 
-class Bus implements LB3.interfaces.Bus {
+public class Bus extends Vehicle{
 
-    int max_people;
-    int people;
-    double max_petrol;
-    double petrol;
-    boolean isOnBase;
+    private int max_people;
+    private int people;
+    private double max_petrol;
+    private double petrol;
+    private boolean isOnBase;
 
-    @Override
+
     public void Bus(int max_people, int people, double max_petrol, double petrol) {
            this.max_petrol = max_petrol;
            this.max_people = max_people;
@@ -18,12 +18,12 @@ class Bus implements LB3.interfaces.Bus {
            this.petrol = petrol;
     }
 
-    @Override
+
     public int getPeopleMax() {
         return max_people;
     }
 
-    @Override
+
     public int getPeople() {
         return people;
     }

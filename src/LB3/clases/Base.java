@@ -1,6 +1,6 @@
 package LB3.clases;
 
-class Base {
+public class Base {
     static int people_on_base = 600;
     static int vehicles_on_base = 100;
     static double petrol_on_base = 5000;

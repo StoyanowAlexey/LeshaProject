@@ -1,14 +1,16 @@
 package LB3.clases;
 
+import LB3.interfaces.Vehicle;
+
 import static java.lang.Math.min;
 
-class Truck implements LB3.interfaces.Truck {
+class Truck extends Vehicle {
     double max_load;
     double load;
     double petrol;
     double max_petrol;
     boolean isOnBase;
-    @Override
+
     public void Truck(double load, double max_load, double petrol, double max_petrol) {
         this.load = load;
         this.max_load = max_load;
@@ -16,32 +18,31 @@ class Truck implements LB3.interfaces.Truck {
         this.max_petrol = max_petrol;
     }
 
-    @Override
+
     public double getCurrentLoad() {
         return load;
     }
 
-    @Override
+
     public double getMaxLoad() {
         return max_load;
     }
 
-    @Override
+
     public void Vehicle(double tank_volume, double petrol_amount) {
 
     }
 
-    @Override
+
     public double getTankVolume() {
         return max_petrol;
     }
 
-    @Override
+
     public double getPetrolAmount() {
         return petrol;
     }
 
-    @Override
     public void arrive() {
          isOnBase = true;
          if(isOnBase == true){
@@ -54,7 +55,7 @@ class Truck implements LB3.interfaces.Truck {
          }
     }
 
-    @Override
+
     public boolean leave() {
         petrol = max_petrol;
         Base.petrol_on_base -= max_petrol;
@@ -72,7 +73,7 @@ class Truck implements LB3.interfaces.Truck {
         }
     }
 
-    @Override
+
     public boolean isOnBase() {
         return isOnBase;
     }

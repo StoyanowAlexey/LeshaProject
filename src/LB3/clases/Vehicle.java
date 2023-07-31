@@ -1,26 +1,25 @@
 package LB3.clases;
 
-public class Vehicle implements LB3.interfaces.Vehicle {
-    double tank_volume;
-    double petrol_amount;
-    boolean isOnBase;
-    @Override
+public class Vehicle extends LB3.interfaces.Vehicle {
+    private double tank_volume;
+    private double petrol_amount;
+    private boolean isOnBase;
     public void Vehicle(double tank_volume, double petrol_amount) {
         this.petrol_amount = petrol_amount;
         this.tank_volume = tank_volume;
     }
 
-    @Override
+
     public double getTankVolume() {
         return tank_volume;
     }
 
-    @Override
+
     public double getPetrolAmount() {
         return petrol_amount;
     }
 
-    @Override
+
     public void arrive() {
         isOnBase = true;
           if(isOnBase == true){
@@ -29,7 +28,6 @@ public class Vehicle implements LB3.interfaces.Vehicle {
           }
     }
 
-    @Override
     public boolean leave() {
         Base.petrol_on_base += petrol_amount;
         petrol_amount = tank_volume;
@@ -45,7 +43,6 @@ public class Vehicle implements LB3.interfaces.Vehicle {
         }
     }
 
-    @Override
     public boolean isOnBase() {
         return isOnBase;
     }
